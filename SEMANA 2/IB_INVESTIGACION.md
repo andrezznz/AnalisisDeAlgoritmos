@@ -102,8 +102,3 @@ Por el principio de inducción matemática, se cumple que:
 1 + 2 + 3 + \dots + n = \frac{n(n+1)}{2} \quad \text{para todo } n \in \mathbb{N}
 ]
 ```
-
----
-
-> 💡 Puedes aplicar esta técnica para demostrar muchas propiedades relacionadas con sumas, productos, recursiones y algoritmos.
-
