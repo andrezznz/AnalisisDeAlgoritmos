@@ -64,3 +64,52 @@ $\lim_{n \to \infty} \dfrac{f(n)}{g(n)} = \infty$
 
 ✅ Por lo tanto, **$f(n) \notin \mathcal{O}(g(n))$**
 
+### 🔍 Análisis adicional
+
+Cuando $n \to \infty$, entonces $\dfrac{n}{\log(n)} \to \infty$, por lo tanto:
+
+$\dfrac{f(n)}{g(n)} \to \infty \Rightarrow f(n) \notin \mathcal{O}(g(n))$
+
+---
+
+Esto implica que **$f(n) \notin \mathcal{O}(g(n))$**
+
+---
+
+### 📌 Comprobar si $f(n) \in \mathcal{O}(n^2)$
+
+Calculamos:
+
+$\dfrac{f(n)}{n^2} = \dfrac{n^3}{n^2} + \dfrac{9n^2 \log(n)}{n^2} = n + 9\log(n) \to \infty$
+
+Esto implica que **$f(n) \notin \mathcal{O}(n^2)$**
+
+---
+
+## ✨ Segunda Parte
+
+**Dado:**
+
+- $f(n) = 2^n$
+- $g(n) = 2^{2n} = (2^n)^2$
+
+---
+
+### 🔹 Comprobar si $f(n) \in \mathcal{O}(g(n))$
+
+$\dfrac{f(n)}{g(n)} = \dfrac{2^n}{2^{2n}} = \dfrac{1}{2^n} \Rightarrow \lim_{n \to \infty} \dfrac{f(n)}{g(n)} = 0$
+
+✅ Esto implica que **$f(n) \in \mathcal{O}(g(n))$**, porque el cociente tiende a cero.
+
+---
+
+### 🔸 Comprobar si $g(n) \in \mathcal{O}(f(n))$
+
+$\dfrac{g(n)}{f(n)} = \dfrac{2^{2n}}{2^n} = 2^n \to \infty \Rightarrow g(n) \notin \mathcal{O}(f(n))$
+
+---
+
+🔶 Esto implica que **$g(n) \notin \mathcal{O}(f(n))$**, no se comprueba ya que el cociente crece sin límite.
+
+---
+
