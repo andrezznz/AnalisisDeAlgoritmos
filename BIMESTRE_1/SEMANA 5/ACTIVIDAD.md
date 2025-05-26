@@ -1,13 +1,3 @@
-# Universidad Técnica Particular de Loja
-
-### 📚 Análisis de Algoritmos
-
-**Nombre:** María Paula Guallo Zhapa  
-**Fecha:** 10/05/2025  
-**Docente:** Ing. Hansel Escudero
-
----
-
 ## ✏️ Actividad
 
 **Dado:**
