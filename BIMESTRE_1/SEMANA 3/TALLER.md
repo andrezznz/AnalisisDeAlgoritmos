@@ -75,3 +75,35 @@ public class MergeSortHelper {
     }
 }
 ```
+
+# 🧾 Aporte: Implementación de Merge Sort en Java
+
+## 📌 Descripción del desarrollo
+
+Para resolver el problema de ordenar una lista de números ingresada por el usuario, implementé el algoritmo **Merge Sort**, que se basa en la estrategia de **divide y vencerás**. El programa fue estructurado en tres partes principales:
+
+1. **Lectura de datos:**  
+   Utilicé la clase `Scanner` para solicitar al usuario el número de elementos y luego los elementos del arreglo.
+
+2. **Ordenamiento con Merge Sort:**  
+   Se definió la función recursiva `mergeSort`, que divide el arreglo en subarreglos cada vez más pequeños, hasta llegar a subarreglos de un solo elemento. Luego, con la función `merge`, se combinan las partes ya ordenadas comparando los elementos uno a uno.
+
+3. **Impresión del resultado:**  
+   Una vez ordenado, se recorre el arreglo para mostrar los elementos en orden creciente.
+
+---
+
+## ✅ Resultado
+
+El programa solicita los datos al usuario, ordena el arreglo ingresado y muestra la lista ordenada correctamente.
+
+### 💻 Ejemplo de ejecución:
+
+```consola
+Ingrese la cantidad de elementos: 5
+Ingrese los elementos del arreglo:
+4 2 5 1 3
+
+Arreglo ordenado:
+1 2 3 4 5
+```
