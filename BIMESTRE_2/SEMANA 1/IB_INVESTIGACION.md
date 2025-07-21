@@ -1,84 +1,82 @@
-# Semana 1  
-## Algoritmia Elemental – Guía de Estudio
+# 🗓️ Semana 09  
+# Algoritmos Voraces
 
-### ¿Qué es un algoritmo?
+## Temas Tratados
 
-Un **algoritmo** es un conjunto de pasos definidos y ordenados que permiten resolver un problema o realizar una tarea.  
-👉 *Es como una receta para llegar a una solución.*
-
-### Características de un buen algoritmo
-
-- **Entrada:** Recibe datos para trabajar.
-- **Salida:** Produce un resultado.
-- **Eficiencia:** Usa el menor tiempo y recursos posibles.
-- **Adaptabilidad:** Puede ajustarse si cambian las condiciones del problema.
+- Objetivo  
+- Características  
+- Grafos No Dirigidos  
+- Árbol de Expansión Mínima (MST)  
+- Algoritmo de Kruskal (teoría + código)
 
 ---
 
-### Tipos de algoritmos
+## 🎯 Objetivo
 
-- **Algoritmos de búsqueda:**  
-  Ej.: Búsqueda lineal, búsqueda binaria.  
-  *Sirven para encontrar un valor dentro de un conjunto de datos.*
-
-- **Algoritmos de ordenación:**  
-  Ej.: Burbuja (Bubble sort), Quicksort.  
-  *Organizan datos en cierto orden (ascendente, descendente, etc.).*
+Explorar las **características fundamentales** y **principales aplicaciones** de los **algoritmos voraces**, con especial énfasis en su implementación sobre **grafos no dirigidos**. Se busca comprender cuándo este enfoque es apropiado, cómo se compara con otras técnicas (como programación dinámica o backtracking), y de qué manera permite obtener soluciones eficientes, ya sean **óptimas** o **aproximadas**, en problemas complejos.
 
 ---
 
-### Algoritmos de multiplicación
+## ⚙️ Características de los Algoritmos Voraces
 
-#### 1. Multiplicación americana
+Los algoritmos voraces construyen soluciones paso a paso, **eligiendo en cada paso la opción que parece más prometedora** (mejor en ese momento), sin reconsiderar decisiones pasadas.
 
-- Multiplicación **de derecha a izquierda**.
-- Se hacen productos parciales y se suman al final.
+| Característica             | Descripción                                                                 |
+|----------------------------|-----------------------------------------------------------------------------|
+| **Selección local óptima** | En cada paso, se elige la mejor opción posible sin mirar el futuro.         |
+| **Sin retroceso**          | Las decisiones no se deshacen, no hay backtracking ni prueba y error.      |
+| **Subestructura óptima**   | Los subproblemas forman parte de una solución global óptima.              |
+| **Eficiencia computacional** | Suelen tener menor complejidad temporal que otros enfoques más generales.  |
+| **Aplicación limitada**    | No todos los problemas se pueden resolver con algoritmos voraces.         |
 
-```text
-     981
-  x 1234
-  ------
-    3924   ← 981 x 4
-   2943    ← 981 x 3 (desplazada 1 lugar)
-  1962     ← 981 x 2 (desplazada 2 lugares)
-   981     ← 981 x 1 (desplazada 3 lugares)
-  ------
-1210554
+**Cuándo usar algoritmos voraces:**  
+- Cuando el problema cumple con la propiedad de **subestructura óptima** y **greedy choice**.  
+- En problemas donde se requiere **velocidad y simplicidad**, y se acepta una solución aproximada si no es óptima.
+
+---
+
+## 🔗 Grafos No Dirigidos
+
+Un grafo no dirigido es una estructura compuesta por vértices conectados por **aristas bidireccionales**. Muchos problemas de optimización sobre grafos pueden beneficiarse del enfoque voraz, como:
+
+- Construcción de Árboles de Expansión Mínima (MST)
+- Caminos más cortos desde un nodo fuente (Dijkstra)
+- Asignación de recursos (Algoritmo de Huffman)
+- Coloración de grafos (versión heurística)
+
+---
+
+## 🌳 Árbol de Expansión Mínima (MST)
+
+Un **árbol de expansión mínima** conecta todos los vértices de un grafo no dirigido, **sin formar ciclos** y con el **menor peso total posible**.
+
+### Algoritmos más conocidos:
+- **Kruskal**: selecciona las aristas de menor peso que no formen ciclos.
+- **Prim**: construye el árbol añadiendo el nodo más cercano aún no visitado.
+
+---
+
+## 🧮 Algoritmo de Kruskal – Teoría
+
+1. Ordena todas las aristas del grafo según su peso.
+2. Inicializa un conjunto disjunto (Union-Find) para gestionar los ciclos.
+3. Recorre las aristas ordenadas e incluye la arista si **no forma un ciclo**.
+4. Detenerse cuando el MST tenga **n−1 aristas** (donde *n* es el número de nodos).
+
+---
+
+## 💻 Pseudocódigo Optimizado de Kruskal
+
+```java
+function kruskal(Grafo G):
+    MST = {}  // Árbol de expansión mínima
+    crearConjuntosDisjuntos(G.vertices)
+    ordenar(G.aristas, porPesoAscendente)
+
+    for (Arista a : G.aristas):
+        if (conjuntosDisjuntos(a.origen, a.destino) == false):
+            MST.agregar(a)
+            unirConjuntos(a.origen, a.destino)
+
+    return MST
 ```
-
-#### 2. Multiplicación rusa (o “a la russe”)
-
-- Técnica antigua y creativa.  
-- Se usa división entre 2 y multiplicación por 2.  
-- Se **suman solo los valores donde el número de la izquierda es impar**.
-
-📋 **Pasos:**
-
-1. Divide el primer número por 2 (sin decimales).
-2. Multiplica el segundo número por 2.
-3. Tacha las filas donde el número de la izquierda es par.
-4. Suma solo los valores de la derecha en filas **impares**.
-
-| Izquierda | Derecha | Sumar |
-|-----------|---------|:-----:|
-| 981       | 1234    | ✅    |
-| 490       | 2468    | ❌    |
-| 245       | 4936    | ✅    |
-| 122       | 9872    | ❌    |
-| 61        | 19744   | ✅    |
-| 30        | 39488   | ❌    |
-| 15        | 78976   | ✅    |
-| 7         | 157952  | ✅    |
-| 3         | 315904  | ✅    |
-| 1         | 631808  | ✅    |
-
-📌 **Resultado final:**  
-`1234 + 4936 + 19744 + 78976 + 157952 + 315904 + 631808 = 1,210,554`
-
----
-
-### ¿Por qué son importantes los algoritmos?
-
-- Son **la base de cualquier programa o software**.  
-- Permiten **resolver problemas de manera clara y eficiente**.  
-- Estudiarlos ayuda a **mejorar el pensamiento lógico**.
